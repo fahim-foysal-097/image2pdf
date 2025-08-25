@@ -1,5 +1,6 @@
 charset-normalizer==3.4.3
 pillow==11.3.0
+pillow_heif==1.1.0
 PyQt6==6.9.1
 PyQt6-Qt6==6.9.1
 PyQt6_sip==13.10.2

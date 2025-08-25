@@ -10,6 +10,18 @@ from PyQt6.QtCore import Qt, QSize, QThread, pyqtSignal
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 from PIL import Image
+import pillow_heif
+
+# Register HEIF/HEIC support in Pillow
+pillow_heif.register_heif_opener()
+
+
+IMAGE_EXTENSIONS = (
+    ".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".tif",
+    ".gif", ".webp", ".ppm", ".pgm", ".pbm", ".ico",
+    ".heic", ".heif"
+)
+
 
 class DragDropList(QListWidget):
     """
@@ -57,7 +69,7 @@ class DragDropList(QListWidget):
             for url in event.mimeData().urls():
                 path = url.toLocalFile()
                 # Check for common image file extensions
-                if path.lower().endswith((".jpg", ".jpeg", ".png", ".bmp", ".tiff")):
+                if path.lower().endswith(IMAGE_EXTENSIONS):
                     self.add_image_item(path)
             event.accept()
             self.reset_style()
@@ -389,7 +401,9 @@ class ImageToPDF(QMainWindow):
 
     def add_images(self):
         """Opens a file dialog to select and add images to the list."""
-        files, _ = QFileDialog.getOpenFileNames(self, "Select Images", "", "Image Files (*.jpg *.jpeg *.png *.bmp *.tiff)")
+        files, _ = QFileDialog.getOpenFileNames(
+    self, "Select Images", "",
+    "Image Files (*.jpg *.jpeg *.png *.bmp *.tiff *.gif *.webp *.ppm *.pgm *.pbm *.ico *.heic *.heif)")
         for f in files:
             self.list_widget.add_image_item(f)
 
