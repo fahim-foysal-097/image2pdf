@@ -88,7 +88,7 @@ class DragDropList(QListWidget):
                 margin: 5px;
                 padding: 5px;
                 border-radius: 5px;
-                background-color: #ffffff;
+                background-color: #575757;
             }
             QListWidget::item:selected {
                 background-color: #87CEFA;
@@ -222,7 +222,7 @@ class ImageToPDF(QMainWindow):
     """
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Modern Image to PDF Converter")
+        self.setWindowTitle("Image to PDF Converter")
         self.setGeometry(300, 100, 900, 600)
         self.page_bg_color = QColor("white")
         self.worker = None
@@ -244,7 +244,7 @@ class ImageToPDF(QMainWindow):
 
         title_label = QLabel("Drag & Drop Images Here")
         title_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        title_label.setStyleSheet("font-size: 20px; font-weight: bold; color: #333333; margin-bottom: 5px;")
+        title_label.setStyleSheet("font-size: 20px; font-weight: bold; color: #ffffff; margin-bottom: 5px;")
         layout.addWidget(title_label)
 
         settings_layout = QHBoxLayout()
@@ -264,13 +264,14 @@ class ImageToPDF(QMainWindow):
         self.bg_color_btn = QPushButton("Select Page Background")
         self.bg_color_btn.setStyleSheet("""
             QPushButton {
+                color : #ffffff
                 background-color: #ffffff;
                 border: 1px solid #cccccc;
                 border-radius: 5px;
                 padding: 5px 10px;
             }
             QPushButton:hover {
-                background-color: #f0f0f0;
+                background-color: #ffff22;
             }
         """)
         settings_layout.addWidget(self.bg_color_btn)

@@ -14,7 +14,7 @@ python -m venv venv_name
 #### Install required libraries.
 
 ```bash
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 #### Run
